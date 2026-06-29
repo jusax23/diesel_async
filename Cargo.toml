@@ -60,7 +60,9 @@ futures-util = { version = "0.3.17", features = ["async-await-macro"] }
 version = "~2.3.0"
 default-features = false
 features = [
-  "chrono"
+  "chrono", 
+  "time", 
+  "numeric"
 ]
 
 [dev-dependencies.diesel_migrations]
@@ -80,7 +82,7 @@ sqlite = ["diesel/sqlite", "sync-connection-wrapper"]
 sync-connection-wrapper = ["tokio/rt-multi-thread"]
 async-connection-wrapper = ["tokio/net", "tokio/rt"]
 migrations = ["diesel_migrations", "async-connection-wrapper", "tokio/rt-multi-thread"]
-pool = []
+pool = ["diesel/async_pool"]
 r2d2 = ["pool", "diesel/r2d2"]
 bb8 = ["pool", "dep:bb8"]
 mobc = ["pool", "dep:mobc", "dep:async-trait", "tokio/sync"]
